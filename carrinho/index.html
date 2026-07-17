@@ -1,0 +1,138 @@
+﻿
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Carrinho — Mundo Mágico CM</title>
+    <meta name="description" content="Locação de brinquedos para festas e eventos infantis em Brasília - DF." />
+    <link rel="icon" href="../static/img/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="../static/css/style.css" />
+  </head>
+  <body>
+    <div class="magia-deco" aria-hidden="true">
+      <i class="fa-solid fa-hat-wizard"></i>
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+      <i class="fa-solid fa-hat-wizard"></i>
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+      <i class="fa-solid fa-hat-wizard"></i>
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+      <i class="fa-solid fa-hat-wizard"></i>
+    </div>
+    <header class="navbar">
+      <a href="../" class="brand">
+        <img src="../static/img/mundomagicomascote.png" alt="Mundo Mágico CM" />
+        <span>Mundo Mágico <strong>CM</strong></span>
+      </a>
+      <input type="checkbox" id="menu-toggle" hidden />
+      <label for="menu-toggle" class="menu-btn"><i class="fa-solid fa-bars"></i></label>
+      <nav class="menu">
+        <a href="../#inflaveis">Brinquedos</a>
+        <a href="../sobre-nos/">Sobre nós</a>
+        <a href="../depoimentos/">Depoimentos</a>
+        <a href="../contato/">Contato</a>
+        
+          <a href="../login/" class="nav-admin"><i class="fa-solid fa-user-lock"></i> Login ADM</a>
+        
+        <a href="../carrinho/" class="nav-cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-badge" data-cart-count>0</span>
+        </a>
+      </nav>
+    </header>
+
+    
+
+    <main>
+<section class="pagina-carrinho">
+  <h1>Seu carrinho</h1>
+  <div class="carrinho-layout">
+    <div class="carrinho-itens">
+      <h2>Brinquedos selecionados</h2>
+      <div id="lista-carrinho" class="lista-carrinho"></div>
+    </div>
+
+    <form id="form-reserva" class="carrinho-resumo">
+      <h2>Dados da reserva</h2>
+      <label>Seu nome
+        <input type="text" id="nome-cliente" required placeholder="Nome completo" /></label>
+      <label>Telefone / WhatsApp
+        <input type="tel" id="telefone-cliente" required placeholder="(61) 99999-9999" /></label>
+      <div class="form-2col">
+        <label>Data do evento
+          <input type="date" id="data-evento" required /></label>
+        <label>Início
+          <input type="time" id="hora-inicio" required /></label>
+      </div>
+
+      <div id="disp-info" class="disp-info" hidden></div>
+
+      <div class="form-2col">
+        <label>Horas de evento
+          <input type="number" id="qtd-horas" min="1" value="4" required /></label>
+        <label>Locais no mesmo dia
+          <select id="qtd-locais">
+            <option value="1">1 local</option>
+            <option value="2">2 locais</option>
+            <option value="3">3 locais</option>
+          </select></label>
+      </div>
+
+      <div id="locais" class="locais-extras">
+        <label>Local 1
+          <input type="text" class="local-input" required placeholder="Bairro / endereço" /></label>
+      </div>
+
+      <div class="total-box">
+        <span>Valor estimado</span>
+        <strong id="valor-total">R$ 0,00</strong>
+      </div>
+      <p class="total-obs">O valor de cada brinquedo cobre até 4 horas. Cada hora a mais soma 1/4 do valor. O valor final, com possível desconto, é confirmado no atendimento.</p>
+
+      <button type="submit" id="btn-finalizar" class="btn btn-primary btn-block">
+        <i class="fa-brands fa-whatsapp"></i> Finalizar pedido via WhatsApp
+      </button>
+      <a href="../#inflaveis" class="btn btn-ghost btn-block">Continuar escolhendo</a>
+    </form>
+  </div>
+</section>
+</main>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div>
+          <h3>Mundo Mágico CM</h3>
+          <p>Locação de brinquedos para festas e eventos infantis em Brasília - DF.</p>
+        </div>
+        <div>
+          <h4>Contato</h4>
+          <p><a href="https://wa.me/5561991540133"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a></p>
+          <p><a href="https://instagram.com/"><i class="fa-brands fa-instagram"></i> Instagram</a></p>
+        </div>
+        <div>
+          <h4>Atalhos</h4>
+          <p><a href="../">Brinquedos</a></p>
+          <p><a href="../depoimentos/">Depoimentos</a></p>
+          <p><a href="../login/">Área administrativa</a></p>
+        </div>
+      </div>
+      <p class="footer-bottom">© Mundo Mágico CM — Brasília - DF. Feito com carinho para a sua festa.</p>
+    </footer>
+
+    <a href="https://wa.me/5561991540133" class="whatsapp-float" aria-label="Falar no WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script src="../static/js/carrinho.js"></script>
+    
+<script src="../static/js/pagina-carrinho.js"></script>
+
+  </body>
+</html>
+
