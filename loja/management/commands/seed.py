@@ -94,10 +94,21 @@ class Command(BaseCommand):
                 f"Catálogo: {len(cats)} categorias, {total} brinquedos, {len(DEPOIMENTOS)} depoimentos."))
 
         # Cria o administrador inicial (login validado pelo banco).
-        user = os.environ.get("ADMIN_USER", "admin")
+        user = os.environ.get("ADMIN_USER", "admbrinquedos@gmail.com")
         pwd = os.environ.get("ADMIN_PASSWORD", "mundomagico123")
         if not User.objects.filter(username=user).exists():
-            User.objects.create_superuser(username=user, password=pwd, email="")
+            User.objects.create_superuser(username=user, password=pwd, email=user)
             self.stdout.write(self.style.SUCCESS(f"Administrador '{user}' criado."))
         else:
+            admin = User.objects.get(username=user)
+            changed = False
+            if not admin.is_staff or not admin.is_superuser:
+                admin.is_staff = True
+                admin.is_superuser = True
+                changed = True
+            if admin.email != user:
+                admin.email = user
+                changed = True
+            if changed:
+                admin.save(update_fields=["is_staff", "is_superuser", "email"])
             self.stdout.write(f"Administrador '{user}' já existe.")
