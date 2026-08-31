@@ -13,6 +13,7 @@ from django.contrib.auth.decorators import user_passes_test
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.dateparse import parse_date, parse_time
+from django.utils.http import url_has_allowed_host_and_scheme
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 
@@ -22,8 +23,6 @@ MAX = settings.MAX_EVENTOS_DIA
 NOMES_MES = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
              "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
 DIAS_SEMANA = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"]
-DEMO_ADMIN_EMAIL = "admbrinquedos@gmail.com"
-DEMO_ADMIN_PASSWORD = "mundomagico123"
 
 staff_required = user_passes_test(lambda u: u.is_active and u.is_staff, login_url="login")
 
@@ -199,21 +198,27 @@ def api_reservas(request):
 
 
 # ----------------------------- login / painel -----------------------------
+def destino_pos_login(user):
+    """O perfil decide o destino: equipe vai ao painel, cliente volta para a loja."""
+    return "painel" if user.is_staff else "index"
+
+
 def login_view(request):
-    if request.user.is_authenticated and request.user.is_staff:
-        return redirect("painel")
+    if request.user.is_authenticated:
+        return redirect(destino_pos_login(request.user))
     if request.method == "POST":
         user = authenticate(request,
                             username=(request.POST.get("usuario") or "").strip().lower(),
                             password=request.POST.get("senha") or "")
-        if user and user.is_staff:
+        if user:
             login(request, user)
-            return redirect(request.GET.get("next") or "painel")
-        messages.error(request, "Usuário ou senha inválidos.")
-    return render(request, "login.html", {
-        "demo_email": DEMO_ADMIN_EMAIL,
-        "demo_password": DEMO_ADMIN_PASSWORD,
-    })
+            proximo = request.GET.get("next") or ""
+            if proximo and url_has_allowed_host_and_scheme(
+                    proximo, allowed_hosts={request.get_host()}, require_https=request.is_secure()):
+                return redirect(proximo)
+            return redirect(destino_pos_login(user))
+        messages.error(request, "E-mail ou senha inválidos.")
+    return render(request, "login.html")
 
 
 def logout_view(request):

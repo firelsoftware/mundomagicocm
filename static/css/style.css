@@ -273,17 +273,18 @@ textarea { resize: vertical; }
 .pagina-login { display: grid; place-items: center; padding: 3rem 1rem; }
 .card-login { background: #fff; border-radius: 22px; box-shadow: var(--sombra); max-width: 380px; padding: 2.2rem; text-align: center; width: 100%; }
 .card-login > i { color: var(--verde); font-size: 2.4rem; }
-.card-login h1 { margin: .6rem 0 .2rem; }
+.card-login h1 { margin: .6rem 0 1.2rem; }
 .card-login p { color: var(--muted); margin: 0 0 1.2rem; }
 .card-login label { text-align: left; }
-.login-demo {
-  background: var(--azul-claro); border: 1px solid #c8d9ea; border-radius: 12px;
-  color: var(--verde-escuro); display: grid; gap: .2rem; margin-bottom: 1rem;
-  padding: .8rem 1rem; text-align: left;
-}
-.login-demo strong { align-items: center; display: flex; gap: .45rem; }
-.login-demo span { color: var(--muted); font-size: .82rem; }
-.login-demo i, .card-login .btn i { font-size: 1rem; }
+.card-login .btn i { font-size: 1rem; }
+.login-aviso { color: var(--vermelho); font-size: .85rem; font-weight: 600; margin: 1rem 0 0; }
+.login-links { font-size: .85rem; margin: 1.1rem 0 0; }
+/* Titulo estreito quebra 'e-mail' no hifen e vira 'e-' numa linha. */
+.junto { white-space: nowrap; }
+.login-links a { color: var(--muted); text-decoration: underline; }
+.login-links a:hover { color: var(--verde); }
+.vitrine-aviso { color: var(--muted); padding: 2.5rem clamp(1rem, 4vw, 2rem); text-align: center; }
+.depo-aviso { color: var(--verde-escuro); font-weight: 600; margin: .8rem 0 0; }
 
 /* Admin */
 .admin { margin: 0 auto; max-width: 1200px; padding: 1.5rem clamp(1rem, 4vw, 2rem) 3rem; }
@@ -316,6 +317,37 @@ td input, td select { padding: .4rem .5rem; }
 .status-pendente { background: #fff7df; color: #b7791f; }
 .status-pago { background: #e8f5ef; color: var(--verde); }
 .status-cancelado { background: #fff0f0; color: var(--vermelho); }
+.perfil-cliente { background: var(--linha); color: var(--muted); }
+.perfil-admin { background: var(--azul-claro); color: var(--verde); }
+.perfil-dono { background: #f3e8ff; color: #7028b0; }
+.senha-pendente { background: #fff7df; color: #b7791f; }
+.senha-intro { color: var(--muted); font-size: .9rem; }
+.senha-dica { color: var(--muted); font-size: .78rem; margin: -.4rem 0 1rem; text-align: left; }
+.passos-equipe { color: var(--muted); display: grid; gap: .5rem; margin: .8rem 0; padding-left: 1.2rem; }
+.passos-equipe strong { color: var(--verde-escuro); }
+.agenda-nav { align-items: center; display: flex; gap: 1rem; justify-content: center; margin-bottom: 1rem; }
+.agenda-nav h2 { margin: 0; }
+.calendario { table-layout: fixed; width: 100%; }
+.calendario th { padding: .4rem; text-align: center; }
+.calendario .dia {
+  border: 1px solid var(--linha); border-radius: 8px; height: 6.5rem;
+  padding: .35rem; vertical-align: top;
+}
+.calendario .fora-do-mes { background: #fafbfc; opacity: .5; }
+.calendario .hoje { border-color: var(--verde); box-shadow: inset 0 0 0 1px var(--verde); }
+.dia-numero { display: block; font-weight: 800; font-size: .85rem; }
+.dia-evento, .dia-bloqueio {
+  border-radius: 5px; display: block; font-size: .68rem; margin-top: .18rem;
+  overflow: hidden; padding: .12rem .3rem; text-overflow: ellipsis; white-space: nowrap;
+}
+.dia-evento { background: var(--azul-claro); color: var(--verde-escuro); }
+.dia-bloqueio { background: #fff0f0; color: var(--vermelho); }
+.dia-bloqueio .btn-remover { background: none; border: 0; color: inherit; cursor: pointer; padding: 0 .1rem; }
+.dia-livres { color: var(--muted); display: block; font-size: .65rem; margin-top: .25rem; }
+@media (max-width: 720px) {
+  .calendario .dia { height: 4.5rem; }
+  .dia-evento, .dia-bloqueio { font-size: .6rem; }
+}
 .form-brinquedo { display: grid; gap: .6rem 1rem; grid-template-columns: repeat(3, 1fr); align-items: end; }
 .form-brinquedo label { margin: 0; }
 .form-brinquedo .full { grid-column: 1 / -1; }

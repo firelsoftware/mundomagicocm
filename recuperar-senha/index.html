@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Recuperar senha — Mundo Mágico CM</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="../static/img/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="../static/css/style.css" />
+  </head>
+  <body>
+    <div class="magia-deco" aria-hidden="true">
+      <i class="fa-solid fa-hat-wizard"></i>
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+      <i class="fa-solid fa-hat-wizard"></i>
+    </div>
+
+    <header class="navbar">
+      <a href="../" class="brand">
+        <img src="../static/img/mundomagicomascote.png" alt="Mundo Mágico CM" />
+        <span>Mundo Mágico <strong>CM</strong></span>
+      </a>
+    </header>
+
+    <main>
+      <section class="pagina-login">
+        <form class="card-login" id="form-recuperar">
+          <i class="fa-solid fa-envelope-open-text"></i>
+          <h1>Recuperar senha</h1>
+          <p class="senha-intro">
+            Digite o e-mail da sua conta. Você recebe um link para escolher uma
+            senha nova — ele vale por uma hora.
+          </p>
+
+          <label>E-mail
+            <input type="email" id="email" required autofocus autocomplete="username"
+                   placeholder="nome@gmail.com" /></label>
+
+          <button type="submit" class="btn btn-primary btn-block">
+            <i class="fa-solid fa-paper-plane"></i> Enviar link
+          </button>
+
+          <p class="login-aviso" id="recuperar-aviso" role="alert" hidden></p>
+          <p class="login-links"><a href="../login/">Voltar para o login</a></p>
+        </form>
+
+        <div class="card-login" id="enviado" hidden>
+          <i class="fa-solid fa-circle-check"></i>
+          <h1>Confira seu <span class="junto">e-mail</span></h1>
+          <p class="senha-intro">
+            Se existir uma conta com esse endereço, o link já está a caminho.
+            Não esqueça de olhar a caixa de spam.
+          </p>
+          <p class="senha-dica">
+            O link vale por uma hora e só pode ser usado uma vez. Passou disso,
+            é só pedir outro.
+          </p>
+          <a href="../login/" class="btn btn-primary btn-block">
+            <i class="fa-solid fa-right-to-bracket"></i> Voltar para o login
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../static/js/config.js"></script>
+    <script src="../static/js/api.js"></script>
+    <script src="../static/js/auth.js"></script>
+    <script src="../static/js/pagina-recuperar-senha.js"></script>
+  </body>
+</html>

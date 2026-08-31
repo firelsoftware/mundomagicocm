@@ -1,22 +1,97 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Login ADM indisponível no GitHub Pages</title>
-  <link rel="stylesheet" href="../static/css/style.css" />
-</head>
-<body>
-  <main class="login-page">
-    <section class="login-card">
-      <h1>Login ADM</h1>
-      <p>Esta versão está publicada no GitHub Pages, que exibe apenas páginas estáticas.</p>
-      <div class="demo-box">
-        <strong>Painel administrativo</strong>
-        <span>Para usar o CRUD de brinquedos, depoimentos, dashboard e relatórios, rode o projeto Django ou hospede em um servidor Python.</span>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Entrar — Mundo Mágico CM</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="../static/img/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="../static/css/style.css" />
+  </head>
+  <body>
+    <div class="magia-deco" aria-hidden="true">
+      <i class="fa-solid fa-hat-wizard"></i>
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+      <i class="fa-solid fa-hat-wizard"></i>
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+      <i class="fa-solid fa-hat-wizard"></i>
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+      <i class="fa-solid fa-hat-wizard"></i>
+    </div>
+    <header class="navbar">
+      <a href="../" class="brand">
+        <img src="../static/img/mundomagicomascote.png" alt="Mundo Mágico CM" />
+        <span>Mundo Mágico <strong>CM</strong></span>
+      </a>
+      <input type="checkbox" id="menu-toggle" hidden />
+      <label for="menu-toggle" class="menu-btn"><i class="fa-solid fa-bars"></i></label>
+      <nav class="menu">
+        <a href="../#inflaveis">Brinquedos</a>
+        <a href="../sobre-nos/">Sobre nós</a>
+        <a href="../depoimentos/">Depoimentos</a>
+        <a href="../contato/">Contato</a>
+        <a href="../login/" class="nav-admin" data-menu-conta><i class="fa-solid fa-user"></i> Entrar</a>
+        <a href="../carrinho/" class="nav-cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-badge" data-cart-count>0</span>
+        </a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="pagina-login">
+        <form class="card-login" id="form-login">
+          <i class="fa-solid fa-user"></i>
+          <h1>Entrar</h1>
+          <label>E-mail
+            <input type="email" name="email" required autofocus autocomplete="username"
+                   placeholder="nome@gmail.com" /></label>
+          <label>Senha
+            <input type="password" name="senha" required autocomplete="current-password" /></label>
+          <button type="submit" class="btn btn-primary btn-block"><i class="fa-solid fa-right-to-bracket"></i> Entrar</button>
+          <p class="login-aviso" id="login-aviso" role="alert" hidden></p>
+          <p class="login-links"><a href="../recuperar-senha/">Esqueci minha senha</a></p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div>
+          <h3>Mundo Mágico CM</h3>
+          <p>Locação de brinquedos para festas e eventos infantis em Brasília - DF.</p>
+        </div>
+        <div>
+          <h4>Contato</h4>
+          <p><a href="https://wa.me/5561991540133"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a></p>
+          <p><a href="https://instagram.com/"><i class="fa-brands fa-instagram"></i> Instagram</a></p>
+        </div>
+        <div>
+          <h4>Atalhos</h4>
+          <p><a href="../">Brinquedos</a></p>
+          <p><a href="../depoimentos/">Depoimentos</a></p>
+          <p><a href="../contato/">Contato</a></p>
+        </div>
       </div>
-      <a class="btn btn-primary" href="../">Voltar para o site</a>
-    </section>
-  </main>
-</body>
+      <p class="footer-bottom">© Mundo Mágico CM — Brasília - DF. Feito com carinho para a sua festa.</p>
+    </footer>
+
+    <a href="https://wa.me/5561991540133" class="whatsapp-float" aria-label="Falar no WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../static/js/config.js"></script>
+    <script src="../static/js/api.js"></script>
+    <script src="../static/js/auth.js"></script>
+    <script src="../static/js/carrinho.js"></script>
+    <script src="../static/js/pagina-login.js"></script>
+    <script>document.addEventListener("DOMContentLoaded", function () { window.Auth.ajustarMenu("../"); });</script>
+  </body>
 </html>

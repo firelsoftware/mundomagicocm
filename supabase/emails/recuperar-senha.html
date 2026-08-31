@@ -1,0 +1,54 @@
+<!-- Modelo do e-mail de recuperação de senha.
+
+     Cole em Authentication > Emails > Reset Password, no painel do Supabase.
+     O que vem de fábrica está em inglês e assina "Supabase Auth" — nenhuma das
+     duas coisas faz sentido para quem trabalha aqui.
+
+     {{ .ConfirmationURL }} é o link; o Supabase troca na hora do envio.
+     E-mail não entende CSS em folha separada, por isso o estilo vai colado em
+     cada tag, que é feio de ler e é o único jeito que funciona no Gmail. -->
+
+<div style="background:#eaf1f8;padding:32px 16px;font-family:Arial,Helvetica,sans-serif;">
+  <div style="background:#ffffff;border-radius:16px;margin:0 auto;max-width:480px;overflow:hidden;">
+
+    <div style="background:#1F5388;padding:24px;text-align:center;">
+      <p style="color:#ffffff;font-size:20px;font-weight:bold;margin:0;">
+        Mundo Mágico CM
+      </p>
+    </div>
+
+    <div style="padding:32px 28px;">
+      <h1 style="color:#1F5388;font-size:20px;margin:0 0 16px;">Recuperar sua senha</h1>
+
+      <p style="color:#333333;font-size:15px;line-height:1.6;margin:0 0 24px;">
+        Alguém pediu uma nova senha para a sua conta no painel do Mundo Mágico.
+        Se foi você, clique no botão abaixo para escolher a senha nova.
+      </p>
+
+      <p style="margin:0 0 24px;text-align:center;">
+        <a href="{{ .ConfirmationURL }}"
+           style="background:#1F5388;border-radius:999px;color:#ffffff;display:inline-block;
+                  font-size:15px;font-weight:bold;padding:14px 32px;text-decoration:none;">
+          Escolher nova senha
+        </a>
+      </p>
+
+      <p style="color:#5a5a5a;font-size:13px;line-height:1.6;margin:0 0 8px;">
+        O link vale por uma hora e só pode ser usado uma vez.
+      </p>
+
+      <p style="color:#5a5a5a;font-size:13px;line-height:1.6;margin:0;">
+        Se não foi você quem pediu, pode ignorar este e-mail — sua senha continua
+        a mesma.
+      </p>
+    </div>
+
+    <div style="background:#f7f9fc;padding:16px 28px;">
+      <p style="color:#8a8a8a;font-size:12px;line-height:1.5;margin:0;">
+        Mundo Mágico CM — locação de brinquedos, Brasília - DF.<br />
+        Este endereço não recebe respostas. Para falar com a gente, use o WhatsApp.
+      </p>
+    </div>
+
+  </div>
+</div>

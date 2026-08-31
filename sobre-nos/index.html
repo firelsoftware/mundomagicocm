@@ -38,7 +38,7 @@
         <a href="../depoimentos/">Depoimentos</a>
         <a href="../contato/">Contato</a>
         
-          <a href="../login/" class="nav-admin"><i class="fa-solid fa-user-lock"></i> Login ADM</a>
+          <a href="../login/" class="nav-admin" data-menu-conta><i class="fa-solid fa-user"></i> Entrar</a>
         
         <a href="../carrinho/" class="nav-cart">
           <i class="fa-solid fa-cart-shopping"></i>
@@ -91,7 +91,7 @@
           <h4>Atalhos</h4>
           <p><a href="../">Brinquedos</a></p>
           <p><a href="../depoimentos/">Depoimentos</a></p>
-          <p><a href="../login/">Área administrativa</a></p>
+          <p><a href="../contato/">Contato</a></p>
         </div>
       </div>
       <p class="footer-bottom">© Mundo Mágico CM — Brasília - DF. Feito com carinho para a sua festa.</p>
@@ -101,7 +101,12 @@
       <i class="fa-brands fa-whatsapp"></i>
     </a>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../static/js/config.js"></script>
+    <script src="../static/js/api.js"></script>
+    <script src="../static/js/auth.js"></script>
     <script src="../static/js/carrinho.js"></script>
+    <script>document.addEventListener("DOMContentLoaded", function () { window.Auth.ajustarMenu("../"); });</script>
     
   </body>
 </html>

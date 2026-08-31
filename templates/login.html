@@ -1,21 +1,16 @@
 {% extends "base.html" %}
-{% block title %}Acesso administrativo — {{ empresa.nome }}{% endblock %}
+{% block title %}Entrar — {{ empresa.nome }}{% endblock %}
 {% block content %}
 <section class="pagina-login">
   <form method="post" class="card-login">
     {% csrf_token %}
-    <i class="fa-solid fa-lock"></i>
-    <h1>Área administrativa</h1>
-    <p>Entre para gerenciar brinquedos, depoimentos, agenda e relatórios.</p>
-    <div class="login-demo">
-      <strong><i class="fa-solid fa-flask"></i> Acesso de demonstração</strong>
-      <span>Os dados já estão preenchidos para a simulação.</span>
-    </div>
-    <label>E-mail do administrador
-      <input type="email" name="usuario" value="{{ demo_email }}" required autofocus autocomplete="username" /></label>
+    <i class="fa-solid fa-user"></i>
+    <h1>Entrar</h1>
+    <label>Usuário
+      <input type="text" name="usuario" required autofocus autocomplete="username" /></label>
     <label>Senha
-      <input type="password" name="senha" value="{{ demo_password }}" required autocomplete="current-password" /></label>
-    <button type="submit" class="btn btn-primary btn-block"><i class="fa-solid fa-right-to-bracket"></i> Entrar no painel</button>
+      <input type="password" name="senha" required autocomplete="current-password" /></label>
+    <button type="submit" class="btn btn-primary btn-block"><i class="fa-solid fa-right-to-bracket"></i> Entrar</button>
   </form>
 </section>
 {% endblock %}

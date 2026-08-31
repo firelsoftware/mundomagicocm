@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Equipe — Mundo Mágico CM</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="../../static/img/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="../../static/css/style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <a href="../../" class="brand">
+        <img src="../../static/img/mundomagicomascote.png" alt="Mundo Mágico CM" />
+        <span>Mundo Mágico <strong>CM</strong></span>
+      </a>
+      <nav class="menu">
+        <a href="../../">Ver site</a>
+        <a href="#" data-sair><i class="fa-solid fa-right-from-bracket"></i> Sair</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="admin">
+        <div class="admin-head">
+          <div>
+            <h1>Equipe</h1>
+            <p class="admin-subtitulo">Quem pode entrar no painel e até onde vai o acesso de cada um.</p>
+          </div>
+          <a href="../" class="btn btn-ghost btn-sm"><i class="fa-solid fa-arrow-left"></i> Dashboard</a>
+        </div>
+
+        <nav class="admin-nav" aria-label="Navegação administrativa">
+          <a href="../"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
+          <a href="../agenda/"><i class="fa-solid fa-calendar-days"></i> Agenda</a>
+          <a href="./"><i class="fa-solid fa-user-shield"></i> Equipe</a>
+        </nav>
+
+        <div class="admin-card">
+          <h2><i class="fa-solid fa-user-shield"></i> Perfis de acesso</h2>
+          <div class="tabela-wrap" data-equipe><p class="vazio">Carregando...</p></div>
+        </div>
+
+        <div class="admin-card">
+          <h2><i class="fa-solid fa-circle-info"></i> Como incluir alguém novo</h2>
+          <p>
+            Criar e apagar a conta em si exige uma chave que dá acesso total ao banco.
+            Essa chave não pode existir num site publicado, porque ficaria visível para
+            qualquer visitante. Por isso a conta nasce fora daqui e o acesso é dado aqui.
+          </p>
+          <ol class="passos-equipe">
+            <li>Crie a conta no painel do Supabase em
+              <strong>Authentication &rarr; Users &rarr; Add user</strong>, marcando
+              <strong>Auto Confirm User</strong>. Use o <strong>e-mail de verdade</strong>
+              da pessoa, o que ela lê no celular — é por ele que chega o link quando
+              ela esquecer a senha.</li>
+            <li>O nome aparece nesta lista como <strong>cliente</strong>.</li>
+            <li>Você muda o perfil para <strong>admin</strong> ou <strong>dono</strong>.</li>
+          </ol>
+          <p>
+            Quem esquecer a senha resolve sozinho pelo <strong>Esqueci minha senha</strong>
+            na tela de login. Você só precisa entrar no Supabase se a pessoa perder o
+            acesso ao próprio e-mail.
+          </p>
+          <p>
+            Para tirar o acesso de alguém, devolva o perfil para <strong>cliente</strong>.
+            Vale na hora: sem o perfil, o banco recusa qualquer leitura ou alteração do
+            painel, mesmo que a pessoa esteja com a sessão aberta.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../../static/js/config.js"></script>
+    <script src="../../static/js/api.js"></script>
+    <script src="../../static/js/auth.js"></script>
+    <script src="../../static/js/painel-equipe.js"></script>
+  </body>
+</html>

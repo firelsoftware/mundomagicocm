@@ -16,10 +16,11 @@ services:
         value: .onrender.com,mundomagicocm.com.br,www.mundomagicocm.com.br
       - key: CSRF_TRUSTED_ORIGINS
         value: https://*.onrender.com,https://mundomagicocm.com.br,https://www.mundomagicocm.com.br
+      # Preenchidos no painel do Render, nunca no repositório.
       - key: ADMIN_USER
-        value: admbrinquedos@gmail.com
+        sync: false
       - key: ADMIN_PASSWORD
-        value: mundomagico123
+        sync: false
       - key: DATABASE_URL
         fromDatabase:
           name: mundomagicocm-db

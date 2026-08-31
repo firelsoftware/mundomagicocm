@@ -1,0 +1,77 @@
+# O plano gratuito do Supabase não faz backup automático. Reserva de cliente é
+# dado de negócio: perder dói. Este workflow tira um dump completo por semana e
+# guarda como artefato do repositório.
+#
+# Segredo necessário (Settings > Secrets and variables > Actions):
+#   SUPABASE_DB_URL
+#     A connection string do pooler, em Project Settings > Database >
+#     Connection string > URI. Use a porta 6543 (pooler), que é a que funciona
+#     de fora da rede do Supabase. Formato:
+#     postgresql://postgres.<ref>:<senha>@aws-0-<regiao>.pooler.supabase.com:6543/postgres
+#
+# Esse segredo dá acesso total ao banco. Nunca coloque em arquivo do repositório.
+#
+# Artefato fica 90 dias. Para guardar mais tempo, baixe periodicamente ou troque
+# o passo final por um envio para armazenamento externo.
+
+name: Backup do Supabase
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Instalar o pg_dump 17
+        run: |
+          set -euo pipefail
+          sudo sh -c 'echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+          curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo gpg --dearmor -o /usr/share/keyrings/pgdg.gpg
+          sudo sed -i 's|deb |deb [signed-by=/usr/share/keyrings/pgdg.gpg] |' /etc/apt/sources.list.d/pgdg.list
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq postgresql-client-17
+          pg_dump --version
+
+      - name: Gerar o dump
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "${SUPABASE_DB_URL}" ]; then
+            echo "Defina o segredo SUPABASE_DB_URL no repositório."
+            exit 1
+          fi
+
+          arquivo="backup-$(date -u +%Y-%m-%d).sql.gz"
+
+          # --no-owner e --no-acl deixam o dump restaurável em qualquer projeto,
+          # inclusive um Supabase novo com outros papéis internos.
+          pg_dump "${SUPABASE_DB_URL}" \
+            --schema=public \
+            --no-owner \
+            --no-acl \
+            | gzip > "${arquivo}"
+
+          tamanho=$(stat -c%s "${arquivo}")
+          echo "Gerado ${arquivo} com ${tamanho} bytes."
+
+          # Um dump saudável nunca é minúsculo. Se vier quase vazio, algo falhou
+          # silenciosamente e é melhor quebrar agora do que descobrir na hora de
+          # restaurar.
+          if [ "${tamanho}" -lt 1000 ]; then
+            echo "Dump suspeito de tão pequeno. Verifique a connection string."
+            exit 1
+          fi
+
+          echo "ARQUIVO=${arquivo}" >> "${GITHUB_ENV}"
+
+      - name: Guardar o artefato
+        uses: actions/upload-artifact@v4
+        with:
+          name: supabase-backup
+          path: ${{ env.ARQUIVO }}
+          retention-days: 90

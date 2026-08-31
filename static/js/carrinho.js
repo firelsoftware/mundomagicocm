@@ -46,6 +46,8 @@
     var btn = e.target.closest(".btn-add");
     if (!btn) return;
     window.Carrinho.adicionar({
+      // o id é o que permite o banco conferir o preço na hora da reserva
+      id: Number(btn.dataset.id),
       nome: btn.dataset.nome,
       valor: Number(btn.dataset.valor),
       imagem: btn.dataset.imagem,

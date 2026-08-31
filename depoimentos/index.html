@@ -38,7 +38,7 @@
         <a href="../depoimentos/">Depoimentos</a>
         <a href="../contato/">Contato</a>
         
-          <a href="../login/" class="nav-admin"><i class="fa-solid fa-user-lock"></i> Login ADM</a>
+          <a href="../login/" class="nav-admin" data-menu-conta><i class="fa-solid fa-user"></i> Entrar</a>
         
         <a href="../carrinho/" class="nav-cart">
           <i class="fa-solid fa-cart-shopping"></i>
@@ -56,41 +56,20 @@
     <p>O que as famílias falam sobre as festas com o Mundo Mágico CM.</p>
   </div>
 
-  <div class="depo-grid">
-    
-    <figure class="depo-card">
-      <img src="../static/img/cliente3.jpg" alt="Juliana Prado" class="depo-foto" />
-      <i class="fa-solid fa-quote-left"></i>
-      <blockquote>Fechamos o pacote pelo WhatsApp em minutos. Festa perfeita, voltaremos a contratar!</blockquote>
-      <figcaption>Juliana Prado</figcaption>
-    </figure>
-    
-    <figure class="depo-card">
-      <img src="../static/img/cliente2.jpg" alt="Marcos Vinícius" class="depo-foto" />
-      <i class="fa-solid fa-quote-left"></i>
-      <blockquote>Atendimento excelente e brinquedos muito limpos e conservados. Recomendo demais!</blockquote>
-      <figcaption>Marcos Vinícius</figcaption>
-    </figure>
-    
-    <figure class="depo-card">
-      <img src="../static/img/cliente1.jpg" alt="Ana Carolina" class="depo-foto" />
-      <i class="fa-solid fa-quote-left"></i>
-      <blockquote>Alugamos o castelo e o tobogã para o aniversário do meu filho. As crianças amaram e a equipe foi super pontual!</blockquote>
-      <figcaption>Ana Carolina</figcaption>
-    </figure>
-    
+  <div class="depo-grid" id="lista-depoimentos">
+    <p class="vazio">Carregando depoimentos...</p>
   </div>
 
   <div class="form-depoimento">
     <h2>Deixe o seu depoimento</h2>
     <p>Conte como foi a sua festa. Publicamos após uma rápida aprovação.</p>
-    <form method="post">
-      <input type="hidden" name="csrfmiddlewaretoken" value="8t6LXVF1xP0Ze4SZJLcUwu9TXQb1x2GWZVPQqkmfifRoWWDdJAFqFtdXX14wsQt1">
+    <form id="form-depoimento">
       <label>Seu nome
-        <input type="text" name="nome" required maxlength="120" /></label>
+        <input type="text" id="depo-nome" required maxlength="120" /></label>
       <label>Seu depoimento
-        <textarea name="texto" rows="4" required maxlength="600"></textarea></label>
+        <textarea id="depo-texto" rows="4" required maxlength="600"></textarea></label>
       <button type="submit" class="btn btn-primary">Enviar depoimento</button>
+      <p class="depo-aviso" id="depo-aviso" role="status" hidden></p>
     </form>
   </div>
 </section>
@@ -111,7 +90,7 @@
           <h4>Atalhos</h4>
           <p><a href="../">Brinquedos</a></p>
           <p><a href="../depoimentos/">Depoimentos</a></p>
-          <p><a href="../login/">Área administrativa</a></p>
+          <p><a href="../contato/">Contato</a></p>
         </div>
       </div>
       <p class="footer-bottom">© Mundo Mágico CM — Brasília - DF. Feito com carinho para a sua festa.</p>
@@ -121,7 +100,13 @@
       <i class="fa-brands fa-whatsapp"></i>
     </a>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../static/js/config.js"></script>
+    <script src="../static/js/api.js"></script>
+    <script src="../static/js/auth.js"></script>
     <script src="../static/js/carrinho.js"></script>
+    <script src="../static/js/pagina-depoimentos.js"></script>
+    <script>document.addEventListener("DOMContentLoaded", function () { window.Auth.ajustarMenu("../"); });</script>
     
   </body>
 </html>

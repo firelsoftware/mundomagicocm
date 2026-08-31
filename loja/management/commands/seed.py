@@ -7,8 +7,9 @@ Uso:
 
 import os
 
+from django.conf import settings
 from django.contrib.auth.models import User
-from django.core.management.base import BaseCommand
+from django.core.management.base import BaseCommand, CommandError
 
 from loja.models import Categoria, Brinquedo, Depoimento
 
@@ -95,7 +96,12 @@ class Command(BaseCommand):
 
         # Cria o administrador inicial (login validado pelo banco).
         user = os.environ.get("ADMIN_USER", "admbrinquedos@gmail.com")
-        pwd = os.environ.get("ADMIN_PASSWORD", "mundomagico123")
+        pwd = os.environ.get("ADMIN_PASSWORD", "")
+        if not pwd:
+            if not settings.DEBUG:
+                raise CommandError(
+                    "Defina ADMIN_USER e ADMIN_PASSWORD no ambiente antes de rodar o seed em produção.")
+            pwd = "mundomagico123"
         if not User.objects.filter(username=user).exists():
             User.objects.create_superuser(username=user, password=pwd, email=user)
             self.stdout.write(self.style.SUCCESS(f"Administrador '{user}' criado."))

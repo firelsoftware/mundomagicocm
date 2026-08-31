@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Painel — Mundo Mágico CM</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="../static/img/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="../static/css/style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <a href="../" class="brand">
+        <img src="../static/img/mundomagicomascote.png" alt="Mundo Mágico CM" />
+        <span>Mundo Mágico <strong>CM</strong></span>
+      </a>
+      <nav class="menu">
+        <a href="../">Ver site</a>
+        <a href="#" data-sair><i class="fa-solid fa-right-from-bracket"></i> Sair</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="admin">
+        <div class="admin-head">
+          <div>
+            <h1>Dashboard administrativo</h1>
+            <p class="admin-subtitulo" data-saudacao>Carregando...</p>
+          </div>
+        </div>
+
+        <nav class="admin-nav" aria-label="Navegação administrativa">
+          <a href="./"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
+          <a href="#brinquedos"><i class="fa-solid fa-cubes"></i> Brinquedos</a>
+          <a href="#depoimentos"><i class="fa-solid fa-comments"></i> Depoimentos</a>
+          <a href="agenda/"><i class="fa-solid fa-calendar-days"></i> Agenda</a>
+          <a href="administradores/" data-so-dono hidden><i class="fa-solid fa-user-shield"></i> Equipe</a>
+        </nav>
+
+        <div class="admin-stats" data-stats></div>
+
+        <div class="admin-card">
+          <h2><i class="fa-solid fa-calendar-check"></i> Reservas</h2>
+          <div class="tabela-wrap" data-reservas><p class="vazio">Carregando...</p></div>
+        </div>
+
+        <div class="admin-card" id="brinquedos">
+          <h2><i class="fa-solid fa-plus"></i> Adicionar brinquedo</h2>
+          <form class="form-brinquedo" data-form-brinquedo>
+            <label>Nome<input type="text" name="nome" required /></label>
+            <label>Valor até 4h<input type="number" name="valor_ate_4h" step="0.01" min="0" required /></label>
+            <label>Categoria<select name="categoria_id" data-categorias></select></label>
+            <label>Imagem (caminho)<input type="text" name="imagem_url" placeholder="img/castelo.jpg" /></label>
+            <label class="full">Descrição<input type="text" name="descricao" /></label>
+            <label class="check"><input type="checkbox" name="destaque" /> Destaque</label>
+            <button type="submit" class="btn btn-primary">Adicionar</button>
+          </form>
+        </div>
+
+        <div class="admin-card">
+          <h2><i class="fa-solid fa-cubes"></i> Catálogo</h2>
+          <div class="tabela-wrap" data-catalogo><p class="vazio">Carregando...</p></div>
+        </div>
+
+        <div class="admin-card" id="depoimentos">
+          <h2><i class="fa-solid fa-comment-dots"></i> Depoimentos</h2>
+          <div class="tabela-wrap tabela-depoimentos" data-depoimentos><p class="vazio">Carregando...</p></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../static/js/config.js"></script>
+    <script src="../static/js/api.js"></script>
+    <script src="../static/js/auth.js"></script>
+    <script src="../static/js/painel.js"></script>
+  </body>
+</html>

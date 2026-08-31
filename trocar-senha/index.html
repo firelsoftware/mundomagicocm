@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Definir sua senha — Mundo Mágico CM</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="../static/img/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="../static/css/style.css" />
+  </head>
+  <body>
+    <div class="magia-deco" aria-hidden="true">
+      <i class="fa-solid fa-hat-wizard"></i>
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+      <i class="fa-solid fa-hat-wizard"></i>
+    </div>
+
+    <header class="navbar">
+      <a href="../" class="brand">
+        <img src="../static/img/mundomagicomascote.png" alt="Mundo Mágico CM" />
+        <span>Mundo Mágico <strong>CM</strong></span>
+      </a>
+    </header>
+
+    <main>
+      <section class="pagina-login">
+        <form class="card-login" id="form-senha">
+          <i class="fa-solid fa-key"></i>
+          <h1>Defina sua senha</h1>
+          <p class="senha-intro">
+            Sua conta foi criada com uma senha provisória. Escolha agora uma senha
+            só sua — ninguém mais vai conhecê-la, nem quem criou a conta.
+          </p>
+
+          <label>Nova senha
+            <input type="password" id="senha-nova" required minlength="8"
+                   autocomplete="new-password" autofocus /></label>
+          <label>Repita a nova senha
+            <input type="password" id="senha-confirma" required minlength="8"
+                   autocomplete="new-password" /></label>
+
+          <p class="senha-dica">Pelo menos 8 caracteres. Evite datas de aniversário e o nome do negócio.</p>
+
+          <button type="submit" class="btn btn-primary btn-block">
+            <i class="fa-solid fa-check"></i> Salvar e entrar
+          </button>
+
+          <p class="login-aviso" id="senha-aviso" role="alert" hidden></p>
+        </form>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../static/js/config.js"></script>
+    <script src="../static/js/api.js"></script>
+    <script src="../static/js/auth.js"></script>
+    <script src="../static/js/pagina-trocar-senha.js"></script>
+  </body>
+</html>
